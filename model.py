@@ -47,12 +47,15 @@ class Autoencoder(nn.Module):
             nn.BatchNorm1d(100),
             nn.Linear(100, 200),
             nn.ReLU(),
+            nn.BatchNorm1d(200),
+            nn.Linear(200, 500),
+            nn.ReLU(),
             nn.BatchNorm1d(500),
             nn.Linear(500, 28 * 28),
         )
 
-        def forward(self, x):
-            z = self.encoder(x)
-            y = self.decoder(z)
+    def forward(self, x):
+        z = self.encoder(x)
+        y = self.decoder(z)
 
-            return y
+        return y
