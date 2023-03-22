@@ -28,7 +28,7 @@ def show_image(x):
     plt.show()
 
 train_x, train_y = load_mnist(flatten=True)
-test_x, test_y = load_mnist(flatten=True)
+test_x, test_y = load_mnist(is_train=False, flatten=True)
 
 train_cnt = int(train_x.size(0) * config.train_ratio)
 valid_cnt = train_x.size(0) - train_cnt
