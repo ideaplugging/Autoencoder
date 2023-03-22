@@ -8,7 +8,7 @@ import torch.optim as optim
 
 class Trainer():
 
-    def __int__(self, model, optimizer, crit):
+    def __init__(self, model, optimizer, crit):
         self.model = model
         self.optimizer = optimizer
         self.crit = crit
@@ -46,6 +46,8 @@ class Trainer():
             if config.verbose >= 2:
                 print("Train Iteration(%d/%d): loss=%.4e" % (i + 1, len(x), float(loss_i)))
 
+            total_loss += float(loss_i)
+
         return total_loss / len(x)
 
     def _validate(self, x, y, config):
@@ -72,6 +74,8 @@ class Trainer():
 
                 if config.verbose >= 2:
                     print("Valid Iteration(%d/%d): loss=%.4e" % (i + 1, len(x), float(loss_i)))
+
+                total_loss += float(loss_i)
 
             return total_loss / len(x)
 
