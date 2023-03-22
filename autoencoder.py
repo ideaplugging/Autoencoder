@@ -13,7 +13,7 @@ from argparse import Namespace
 config = {
     'train_ratio': .8,
     'batch_size': 256,
-    'n_epoch': 50,
+    'n_epochs': 50,
     'verbose': 1,
     'btl_size': 2
 }
@@ -55,7 +55,7 @@ crit = nn.MSELoss()
 
 trainer = Trainer(model, optimizer, crit)
 
-trainer.train((train_x, train_y), (valid_x, valid_y), config)
+trainer.train((train_x, train_x), (valid_x, valid_x), config)
 
 # Test
 
